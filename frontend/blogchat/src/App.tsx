@@ -1,8 +1,6 @@
 import { useState } from "react"
-import reactLogo from "./assets/react.svg"
-import viteLogo from "/vite.svg"
 import "./App.css"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Home from "../src/pages/select"
 import Chat from "../src/pages/chat"
 import { Character } from "./api/types"
@@ -15,7 +13,7 @@ function App() {
 
   return (
     <Router>
-      <Switch>
+      <Routes>
         <Route
           path="/"
           element={
@@ -29,7 +27,7 @@ function App() {
           path="/chat"
           element={<Chat selectedCharacter={selectedCharacter} />}
         />
-      </Switch>
+      </Routes>
     </Router>
   )
 }

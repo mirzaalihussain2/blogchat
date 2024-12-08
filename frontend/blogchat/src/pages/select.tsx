@@ -23,7 +23,7 @@ const CharacterSelectionPage = ({
       setCharacters(characters)
     }
 
-    fetchCharacters()
+    // fetchCharacters()
   }, [])
 
   const loading = characters.length === 0
