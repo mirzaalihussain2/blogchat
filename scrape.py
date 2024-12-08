@@ -51,6 +51,10 @@ links = [item for item in scrape_result['links'] if isinstance(item, str)]
 valid_urls = filter_urls_by_domain(links, extract_domain(web_articles))
 valid_urls = valid_urls[:5]
 
+# Create blog_posts directory if it doesn't exist
+output_dir = 'blog_posts'
+os.makedirs(output_dir, exist_ok=True)
+
 for url in valid_urls:
     result = app.scrape_url(url, params={'formats': ['html']})
     title = result['metadata']['title']
@@ -71,6 +75,8 @@ for url in valid_urls:
     # Strip whitespace from beginning and end of text
     plain_text = plain_text.strip()
     
-    with open(f'{title}.txt', 'w', encoding='utf-8') as f:
+    # Save file in blog_posts directory
+    file_path = os.path.join(output_dir, f'{title}.txt')
+    with open(file_path, 'w', encoding='utf-8') as f:
         f.write(f"TITLE: {title}\n")
         f.write(plain_text)    
